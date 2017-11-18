@@ -5,11 +5,14 @@ output:
   html_document:
     keep_md: true
 ---
-
-
 ## Loading and preprocessing the data
 
-```{r echo=TRUE}
+```{r echo=FALSE}
+#To render this R Markdown file, install the rmarkdown package and use
+#render function to render this Rmd file in html
+```
+
+```{r}
 #Unzip the raw data, read it in object and process the variables in right format
 
 unzip("activity.zip")
@@ -19,7 +22,7 @@ str(data)
 ```
 ## What is mean total number of steps taken per day?
 
-```{r echo=TRUE}
+```{r}
 #compute total steps per day; plot the values per day; compute the mean and
 #median of "total steps per day" computer earlier
 
@@ -34,7 +37,7 @@ medianstepsperday <- median(stepsperday, na.rm = TRUE)
 
 ## What is the average daily activity pattern?
 
-```{r echo=TRUE}
+```{r}
 avgstepsinterval <- tapply(data$steps, data$interval, mean, na.rm = TRUE)
 plot(names(avgstepsinterval), avgstepsinterval, xlab = "Interval", ylab = "
      Avergae number of steps", type = "l")

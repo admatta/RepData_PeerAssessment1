@@ -5,9 +5,9 @@ output:
   html_document:
     keep_md: true
 ---
-
-
 ## Loading and preprocessing the data
+
+
 
 
 ```r
@@ -36,7 +36,7 @@ stepsperday <- tapply(data$steps, data$date, sum, na.rm = TRUE)
 barplot(stepsperday, xlab = "Date", ylab = "Total number of steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ```r
 meanstepsperday <- mean(stepsperday, na.rm = TRUE) 
@@ -55,7 +55,7 @@ plot(names(avgstepsinterval), avgstepsinterval, xlab = "Interval", ylab = "
      Avergae number of steps", type = "l")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 ```r
 #finding the index in tht output which has the max value and finding the
@@ -85,26 +85,6 @@ totalmissingvalues <- sum(is.na(data$steps))
 #5 minute interval. We'll be using dplyr package functions
 
 library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 intervalmeans <- data %>% group_by(interval) %>% summarise(mean(steps, 
                                                                 na.rm = TRUE))
 names(intervalmeans) <- c("interval", "meanval")
@@ -125,7 +105,7 @@ totalsteps <- tapply(data1$steps, data1$date, sum)
 barplot(totalsteps, xlab = "Date", ylab = "Total number of steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 ```r
 #computing new mean and median from the on total steps computed on new data set
@@ -163,6 +143,6 @@ xyplot(meansteps ~ interval | typeofday, data = meanstepsinttypeday, type = "l"
        , xlab = "Interval", ylab = "Average number of steps", layout = c(1,2))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 ####As we can see from the plot there is difference in activity between weekdays and weekends. 

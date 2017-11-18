@@ -177,16 +177,8 @@ totalmissingvalues &lt;- sum(is.na(data$steps))</code></pre>
 <pre class="r"><code># Strategy to set NA values. Value will be set to mean of the corresponding 
 #5 minute interval. We'll be using dplyr package functions
 
-library(dplyr)</code></pre>
-<pre><code>## 
-## Attaching package: 'dplyr'</code></pre>
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>intervalmeans &lt;- data %&gt;% group_by(interval) %&gt;% summarise(mean(steps, 
+library(dplyr)
+intervalmeans &lt;- data %&gt;% group_by(interval) %&gt;% summarise(mean(steps, 
                                                                 na.rm = TRUE))
 names(intervalmeans) &lt;- c(&quot;interval&quot;, &quot;meanval&quot;)
 
